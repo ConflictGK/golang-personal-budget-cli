@@ -83,8 +83,9 @@ func CreateBudget(month time.Month, max float32) (*Budget, error) {
 	if hasEntry {
 		return nil, errDuplicateEntry
 	}
-
-	(*newBudget).Max = max
+	var NewSlice []Item
+	var NewBudget Budget = Budget{Max: max, Items: NewSlice}
+	newBudget = &NewBudget
 	report[month] = newBudget
 
 	return newBudget, nil
